@@ -42,7 +42,7 @@ Here are the actual steps in the codelab itself:
 - Then use the zip operator to combine for the Observable<NetworkResponse> objects, in the zip function combine both the lists
 - Use the map operator to sort the combined list of results
 - Like before, use the Thread Schedulers to do the network task and mapping in the background thread and the subscription in the main thread
-- Once the fab is clicked on the screen, you would need display the results in provided RecyclerView
+- Once the fab is clicked on the screen, you would need to display the results in provided RecyclerView
 
 ##Dependencies
 - AppCompat, RecyclerView and the Design support library
