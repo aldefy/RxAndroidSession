@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by sohammondal on 12/10/15.
+ * Created by aditlal on 12/10/15.
  * Represents a single result item in in {@code MusicApi}
  */
 public class Result {

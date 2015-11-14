@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,10 +39,16 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        viewHolder.track.setText(results.get(position).getArtistName() + ", " + results.get(position).getTrackName());
-        viewHolder.time.setText(String.valueOf(results.get(position).getTrackTimeMillis()));
-
-        Picasso.with(mContext).load(results.get(position).getArtworkUrl60())
+        viewHolder.track.setText(results.get(position).getTrackName());
+        int millis = results.get(position).getTrackTimeMillis();
+        viewHolder.time.setText(String.valueOf(String.format("%d min, %d sec",
+                TimeUnit.MILLISECONDS.toMinutes(millis),
+                TimeUnit.MILLISECONDS.toSeconds(millis) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
+        )));
+        String url = results.get(position).getArtworkUrl100();
+        url = url.replace("100x100bb", "600x600bb");
+        Picasso.with(mContext).load(url)
                 .fit().placeholder(R.drawable.ic_music_album).error(R.drawable.ic_music_album).into(viewHolder.albumArt);
     }
 

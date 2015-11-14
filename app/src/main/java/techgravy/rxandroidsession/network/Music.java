@@ -1,19 +1,23 @@
 package techgravy.rxandroidsession.network;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
-import cc.soham.rxblrdroid.objects.NetworkResponse;
-import cc.soham.rxblrdroid.objects.Result;
 import rx.Observable;
 import rx.Subscriber;
+import techgravy.rxandroidsession.objects.NetworkResponse;
+import techgravy.rxandroidsession.objects.Result;
 
 /**
  * Created by aditlal on 17/10/15.
  */
 public class Music {
-    public static Observable<NetworkResponse> createMusicResponse() {
+    public static Observable<NetworkResponse> createMusicResponse(final String artist) {
 
         /* One way of doing it
         Observable.create(new Observable.OnSubscribe<NetworkResponse>() {
@@ -27,7 +31,7 @@ public class Music {
             @Override
             public void call(Subscriber<? super NetworkResponse> subscriber) {
                 try {
-                    NetworkResponse networkResponse = MusicApi.getApi().getMusic("Iron Maiden");
+                    NetworkResponse networkResponse = MusicApi.getApi().getMusic(artist);
                     subscriber.onNext(networkResponse);
                     subscriber.onCompleted();
                 } catch (Exception e) {
@@ -42,7 +46,20 @@ public class Music {
         Collections.sort(list, new Comparator<Result>() {
             @Override
             public int compare(Result lhs, Result rhs) {
-                return rhs.getTrackTimeMillis() - lhs.getTrackTimeMillis();
+                try {
+                    String lhsString = lhs.getReleaseDate();
+                    lhsString = lhsString.split("T")[0];
+                    String rhsString = rhs.getReleaseDate();
+                    rhsString = rhsString.split("T")[0];
+                    // Date : 2008-06-10
+                    DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+                    Date lhsDate = df.parse(lhsString);
+                    Date rhsDate = df.parse(rhsString);
+
+                    return rhsDate.compareTo(lhsDate);
+                } catch (ParseException e) {
+                    return rhs.getTrackTimeMillis() - lhs.getTrackTimeMillis();
+                }
             }
         });
         return list;

@@ -1,14 +1,14 @@
 package techgravy.rxandroidsession.network;
 
-import cc.soham.rxblrdroid.objects.NetworkResponse;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.http.GET;
 import retrofit.http.Query;
 import rx.Observable;
+import techgravy.rxandroidsession.objects.NetworkResponse;
 
 /**
- * Created by sohammondal on 12/10/15.
+ * Created by aditlal on 12/10/15.
  * Handles all network operations
  */
 public class MusicApi {

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:orientation="vertical">
 
     <TextView
@@ -11,9 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:text="Change "
-        android:textColor="@color/white_fa"
-        android:textSize="18sp"/>
+        android:text="@string/search"
+        android:textAppearance="@android:style/TextAppearance.DialogWindowTitle"
+        android:textColor="@color/white"
+        />
 
     <EditText
         android:id="@+id/messageEditText"
@@ -22,36 +23,29 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="5dp"
-        android:backgroundTint="@color/accent"
+        android:backgroundTint="@color/colorAccent"
         android:gravity="center_horizontal"
-        android:hint="Type "
+        android:hint="@string/et_artist_hint"
         android:inputType="text|textCapSentences"
         android:lines="1"
+        android:imeOptions="actionDone"
         android:maxLines="1"
-        android:textColor="@color/white_fa"
-        android:textColorHint="@color/white_fa"
-        android:textSize="16sp"/>
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        />
 
     <TextView
         android:id="@+id/subText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/accent"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/white"
         android:textSize="14sp"
-        android:visibility="gone"
-        tools:text="some text"
+        android:visibility="visible"
+        android:text="@string/search_tag"
         tools:visibility="visible"/>
 
-    <Button
-        android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="16dp"
-        android:background="@drawable/drawable_rounded_button"
-        android:text="Send"
-        android:visibility="gone"/>
 
 </LinearLayout>

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sohammondal on 12/10/15.
+ * Created by aditlal on 12/10/15.
  * Represents the network response in {@code MusicApi}
  */
 public class NetworkResponse {

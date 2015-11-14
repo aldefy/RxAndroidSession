@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">RxAndroid Session</string>
     <string name="action_settings">Settings</string>
+    <string name="search">Search</string>
+    <string name="search_tag">Find music video by searching for an Artist</string>
+    <string name="et_artist_hint">Artist Name</string>
 </resources>
