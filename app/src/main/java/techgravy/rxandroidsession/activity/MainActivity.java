@@ -1,7 +1,6 @@
 package techgravy.rxandroidsession.activity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -10,15 +9,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -69,65 +61,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.fab)
-    void fabOnClick(){
-        dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog_edit_one, null);
-        ((EditText) dialogView.findViewById(R.id.messageEditText)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (((EditText) dialogView.findViewById(R.id.messageEditText)).getText().length() < 2) {
-                        Toast.makeText(MainActivity.this, "Enter a valid name", Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
-                    mainFragment.fetchData(((EditText) dialogView.findViewById(R.id.messageEditText)).getText().toString());
-                    searchDialog.dismiss();
-                    return true;
-                }
-                return false;
-            }
-        });
-        builder = new AlertDialog.Builder(MainActivity.this, R.style.AppCompatAlertDialogStyle)
-                .setView(dialogView);
-        builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (((EditText) dialogView.findViewById(R.id.messageEditText)).getText().length() < 2) {
-                    Toast.makeText(MainActivity.this, "Enter a valid name", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                mainFragment.fetchData(((EditText) dialogView.findViewById(R.id.messageEditText)).getText().toString());
-
-            }
-        });
-
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                searchDialog.dismiss();
-            }
-        });
-        searchDialog = builder.create();
-        searchDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-            }
-        });
-
-        searchDialog.setCanceledOnTouchOutside(true);
-        searchDialog.show();
-
-
-        //Grab the window of the dialog, and change the width
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        Window window = searchDialog.getWindow();
-        lp.copyFrom(window.getAttributes());
-        //This makes the dialog take up the full width
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        window.setAttributes(lp);
+    void fabOnClick() {
+        /* On Clicking the fab button , the search dialog should appear
+            , enter a valid query (artist name) , handle errors
+            submit the query to fragment for fetching and displaying the results.
+            */
     }
-
-
 
 
 }
