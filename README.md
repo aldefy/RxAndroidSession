@@ -22,7 +22,7 @@ Use the concepts of RxJava to orchestrate different operations in android. More 
 ###Preparation
 This is the final output of the codelab :
 
-![Image of Demo app ](https://bytebucket.org/aditlal_/rxandroidsession/raw/3d028b43315b1abf4e3312eb7659c13d3fd7a285/screenshot.png?token=4d1f1d8feaf28245694941c08f921d393e3f00b5)
+![Image of Demo app ](https://github.com/aldefy/RxAndroidSession/blob/master/screenshot.png)
 
 To get started, you would need to clone the repository and delete/clear some files/methods, more specifically
 - Clear the Music.java class in network package
